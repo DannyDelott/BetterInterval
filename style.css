@@ -1,0 +1,55 @@
+.circle {
+  position: relative;
+  margin: 7em auto;
+  width: 16em; height: 16em;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.click {
+  background:#008080;
+  -webkit-transition: background 300ms ease-out; /* property duration timing-function delay */
+  -moz-transition: background 300ms ease-out;
+  -o-transition: background 300ms ease-out;
+  transition: background 300ms ease-out;
+}
+.clearclick {
+  background:lightblue;
+  -webkit-transition: background 300ms ease-out; /* property duration timing-function delay */
+  -moz-transition: background 300ms ease-out;
+  -o-transition: background 300ms ease-out;
+  transition: background 300ms ease-out;
+}
+
+.arc {
+  overflow: hidden;
+  position: absolute;
+  top: -1em; right: 50%;
+  bottom: 50%; left: -1em;
+  transform-origin: 100% 100%;
+  transform: rotate(90deg) skewX(30deg);
+}
+.arc:before {
+  box-sizing: border-box;
+  display: block;
+  border: solid 1em navy;
+  width: 200%; height: 200%;
+  border-radius: 50%;
+  transform: skewX(-30deg);
+  content: '';
+}
+
+.arc.counterclockwise{
+  transition: 2s ease-in-out;
+  transform : rotate(420deg) skewX(30deg);
+  }
+.arc.clockwise{
+  transition: 2s ease-in-out;
+  transform : rotate(60deg) skewX(30deg);
+  }
+
+.arc.pause {
+  -moz-transition-play-state: paused;
+  -webkit-animation-play-state: paused; /* Chrome, Safari, Opera */
+  -o-transition-play-state: paused;
+  animation-play-state: paused;
+}
