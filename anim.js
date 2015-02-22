@@ -13,9 +13,10 @@ window.$arc = $('.arc');
  * GLOBAL FUNCTIONS *
  * ******************/
 
-window.betterInterval = function(execute, timeout) {
+window.betterInterval = function(execute, timeout, delayFirst) {
   execute.stop = false;
   execute.stopped = false;
+  if(delayFirst){ execute(); }
   (function subroutine() {
     setTimeout(function() {
       if(!execute.stop){
@@ -63,7 +64,6 @@ $(function(){
 
 
   $arc.toggleClass('clockwise');
-  $arc.offset();
-  betterInterval(rotateArc, 2000);
+  betterInterval(rotateArc, 2000, true);
    
 });
