@@ -1,12 +1,13 @@
 
 // put elements on page
 document.write('<link rel=\"stylesheet\" type=\"text\/css\" href=\"https://51858da5cb51d41735aabeccd0dc3fe50b123ac5.googledrive.com/host/0B2ZkhS0DTgoleGVQOEFydmVmZE0\">');
-document.write('<div class=\"content\"><\/div>');
+document.write('<div class=\"content\"><div class=\"container\"></div><\/div>');
 
 /* ******************
  * GLOBAL VARIABLES *
  * ******************/
 window.$content = $('.content');
+window.$container = $('.container');
 window.interval = 7000;
 /* ******************
  * GLOBAL FUNCTIONS *
@@ -31,7 +32,7 @@ window.randomQuote = function(){
 };
 window.changeQuote = function(){
   $content.fadeOut('slow', function(){
-    $content.html(randomQuote());
+    $container.html(randomQuote());
     $content.fadeIn('slow');
   });
 };
@@ -45,21 +46,22 @@ $(function(){
   /* ****************
    * EVENT HANDLERS *
    * ****************/
-$content.on('click', function(){
-  console.log('click', changeQuote.stopped);
+  $content.on('click', function(){
+  
   // case 1: currently playing, let's stop it
-  if(!changeQuote.stopped && !changeQuote.stop){
-    console.log('stop');
+  if(!changeQuote.stop){
+    $content.css('background', '#bbb');
     changeQuote.stop = true;
   }
   
   // case 2: we've stopped it, but we're waiting for a response  
   else if(!changeQuote.stopped && changeQuote.stop) {
+    changeQuote.stop = false;
+    $content.css('background', '#eee');
     changeQuote();
-    console.log('waiting on stop');
   }
   else {
-    console.log('run interval');
+    $content.css('background', '#eee');
     betterInterval(changeQuote, interval, true);
   }
 });
