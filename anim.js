@@ -8,7 +8,7 @@ document.write('<div class=\"content\"><div class=\"container\"></div><\/div>');
  * ******************/
 window.$content = $('.content');
 window.$container = $('.container');
-window.interval = 7000;
+window.interval = 5000;
 /* ******************
  * GLOBAL FUNCTIONS *
  * ******************/
