@@ -1,21 +1,21 @@
 
 // put elements on page
-document.write('<link rel=\"stylesheet\" type=\"text\/css\" href=\"style.css\">');
+document.write('<link rel=\"stylesheet\" type=\"text\/css\" href=\"https://51858da5cb51d41735aabeccd0dc3fe50b123ac5.googledrive.com/host/0B2ZkhS0DTgoleGVQOEFydmVmZE0\">');
 document.write('<div class=\"content\"><\/div>');
 
 /* ******************
  * GLOBAL VARIABLES *
  * ******************/
 window.$content = $('.content');
-
+window.interval = 7000;
 /* ******************
  * GLOBAL FUNCTIONS *
  * ******************/
 
-window.betterInterval = function(execute, timeout, delayFirst) {
+window.betterInterval = function(execute, timeout, first) {
   execute.stop = false;
   execute.stopped = false;
-  if(delayFirst){ execute(); }
+  if(first){ execute();console.log('executed'); }
   (function subroutine() {
     setTimeout(function() {
       if(!execute.stop){
@@ -45,13 +45,30 @@ $(function(){
   /* ****************
    * EVENT HANDLERS *
    * ****************/
-
+$content.on('click', function(){
+  console.log('click', changeQuote.stopped);
+  // case 1: currently playing, let's stop it
+  if(!changeQuote.stopped && !changeQuote.stop){
+    console.log('stop');
+    changeQuote.stop = true;
+  }
+  
+  // case 2: we've stopped it, but we're waiting for a response  
+  else if(!changeQuote.stopped && changeQuote.stop) {
+    changeQuote();
+    console.log('waiting on stop');
+  }
+  else {
+    console.log('run interval');
+    betterInterval(changeQuote, interval, true);
+  }
+});
 
   /* **************
    * DEFAULT CODE *
    * **************/
 
-  betterInterval(changeQuote, 4000, true);
+  betterInterval(changeQuote, interval, true);
    
 });
 

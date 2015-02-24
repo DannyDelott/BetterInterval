@@ -1,15 +1,18 @@
 .content {
   font-family: Consolas, Courier, monospace;
   font-size: 16pt;
-  width: 40%;
+  width: 80%;
+  height:200px;
   position: relative;
-  margin-left: auto;
-  margin-right: auto;
+  padding:50px;
+  background-color: #eee;
   padding-left: 10%;
+  border-radius:15px;
 }
 
 .quote {
   line-height: 1.5;
+  margin:0 auto;
 }
 
 .action {
@@ -20,5 +23,6 @@
   padding: 20px 0 10px 15%;
   font-style: italic;
   font-size: 80%;
+  margin:0 auto;
   color: gray;
 }
